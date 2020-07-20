@@ -13,9 +13,7 @@ eg: ::
 Or start terminal emulator on web-browser: ::
     192.168.4.1/terminal.html
 
-The emulator is implemented using the 
-
-.. _`jQuery Terminal Emulator`: https://terminal.jcubic.pl/
+The emulator is implemented using the **jQuery Terminal Emulator**: https://terminal.jcubic.pl/
 
 library
 
@@ -33,8 +31,7 @@ library
     telnet 192.168.4.1
 
 Так-же возможен запуск эмулятора терминала прямо из браузера благодаря библиотеке 
-
-.. _`jQuery Terminal Emulator`: https://terminal.jcubic.pl/
+**jQuery Terminal Emulator**: https://terminal.jcubic.pl/
 
 Для этого достаточно перейти по ссылке: ::
     192.168.4.1/terminal.html
@@ -50,13 +47,10 @@ Wemos D1 Mini rs232 shield
 Для сборки законченного устройства, разработан шилд для **wemos d1 mini**,
 который преобразует **uart** микроконтроллера в физический интерфейс **rs232** с помощью
 микросхемы **max3232**.
-
-.. _`Схема и плата`: https://easyeda.com/clericJ/wemos-d1mini-rs232shield
+**Схема и плата**: https://easyeda.com/clericJ/wemos-d1mini-rs232shield
 
 Оптимальным выбором для отладочной платы с **esp8266** будет любая плата с автономным
-питанием от аккумулятора. Например: 
-
-.. _TTGO T-OI ESP8266`: https://aliexpress.ru/item/4000429110448.html?spm=a2g0s.9042311.0.0.2b5133edVjkrSm&_ga=2.179155172.1130155723.1595170840-791673895.1587745386
+питанием от аккумулятора. Например  **TTGO T-OI ESP8266**: https://aliexpress.ru/item/4000429110448.html?spm=a2g0s.9042311.0.0.2b5133edVjkrSm&_ga=2.179155172.1130155723.1595170840-791673895.1587745386
 
 .. image:: img/wemos-rs232-shield.png
     :scale: 50%
