@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wireless Terminal - конфигуратор</title>
+    <title>Wireless Terminal - configurator</title>
     <style>
         html,
         body {
@@ -74,10 +74,6 @@
             .head {
                 height: 5%;
             }
-
-            .wrapper {
-                height: none;
-            }
         }
 
         h1 {
@@ -111,15 +107,20 @@
             border: 1px solid #E8E8E8;
         }
 
-        input[type="submit"] {
-            border: 2px solid #E8E8E8;
+        input[type="submit"], input[type="button"] {
+            font-style: normal;
+            border-radius: 7px;
+            border: 1.5px solid #E8E8E8;
             text-align: center;
             padding: 3px;
             position: relative;
             left: 50%;
             color: white;
-            background: #c94410;
+            background: #12a5be;
             transform: translate(-50%, 0);
+        }
+        #save_and_reboot {
+            background: #990f1a;
         }
     </style>
 </head>
@@ -127,7 +128,7 @@
 <body>
     <div class="wrapper">
         <div class="head">
-            <h1>Wireless Terminal - конфигуратор</h1>
+            <h1>Wireless Terminal</h1>
         </div>
         <div class="sidebar">
             <h2></h2>
@@ -135,7 +136,7 @@
         <div class="content">
             <form method="POST" action="/save">
                 <p>
-                <h2><b>Последовательный порт</b>
+                <h2><b>Serial port</b>
                     <hr align="center" size="1" />
                     </>
                     </p>
@@ -143,7 +144,7 @@
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td valign="top" width="30%" align="left">
-                                <div>Скорость:</div>
+                                <div>Speed:</div>
                             </td>
                             <td>&nbsp;</td>
                             <td valign="top">
@@ -160,7 +161,7 @@
                                 </select>
                             </td>
                         <tr>
-                            <td valign="top">Конфигурация:</td>
+                            <td valign="top">Configuration:</td>
                             <td>&nbsp;</td>
                             <td valign="top">
                                 <select name="config" size="1" id="config">
@@ -194,7 +195,7 @@
                     </table>
                     </p>
                     <p>
-                    <h2><b>Точка доступа<b />
+                    <h2><b>Access Point<b />
                             <hr align="center" size="1" />
                             </>
                             </p>
@@ -207,19 +208,19 @@
                                     <td>&nbsp;</td>
                                     <td valign="top">
                                         <input type="text" name="SSID" id="SSID" maxlength="32"
-                                            placeholder="имя точки доступа" required pattern="[0-9a-zA-Z\-]{3,32}">
+                                            placeholder="access point name" required pattern="[0-9a-zA-Z\-]{3,32}">
                                     </td>
                                 <tr>
-                                    <td valign="top">Пароль:</td>
+                                    <td valign="top">Password:</td>
                                     <td>&nbsp;</td>
                                     <td valign="top">
                                         <input type="password" name="password" id="password" maxlength="64"
-                                            placeholder="мин. 8 символов" required pattern="[0-9a-zA-Z@#$%]{8,64}">
+                                            placeholder="min. 8 characters" required pattern="[0-9a-zA-Z@#$%]{8,64}">
                                     </td>
                                 </tr>
                                 </tr>
                                 <tr>
-                                    <td valign="top">Канал:</td>
+                                    <td valign="top">Channel:</td>
                                     <td>&nbsp;</td>
                                     <td valign="top"><input type="number" min="1" max="13" list="channels"
                                             name="channel" id="channel" required>
@@ -241,10 +242,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td valign="top">IP-адрес:</td>
+                                    <td valign="top">IP-address:</td>
                                     <td>&nbsp;</td>
                                     <td valign="top"><input type="text" name="address" id="address"
-                                            placeholder="формат 0.0.0.0" required
+                                            placeholder="format 0.0.0.0" required
                                             pattern="^(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[0-9]{2}|[0-9])(\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[0-9]{2}|[0-9])){3}$">
                                     </td>
                                 </tr>
@@ -252,14 +253,15 @@
                             </table>
                             </p>
                             <br>
-                            <input type="submit" value="Сохранить и перезагрузить" id="save_and_reboot">
+                            <input type="button" value="RUN TERMINAL" id="start_terminal" onclick="location.href='/terminal.html'">
+                            <input type="submit" value="SAVE AND REBOOT" id="save_and_reboot">
             </form>
         </div>
         <div class="advert">
             <h2></h2>
         </div>
         <div class="footer">
-            <span>Алмаз Каримов © 2020</span>
+            <span>Almaz Karimov © 2020</span>
         </div>
     </div>
     <script>

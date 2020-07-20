@@ -34,7 +34,7 @@ public:
     String APSSID = FPSTR(DEFAULT_AP_SSID);
     String APPassword = FPSTR(DEFAULT_AP_PASS);
     unsigned int APchannel = DEFAULT_AP_CHANNEL;
-    IPAddress APaddress = IPAddress(192, 168, 1, 1);
+    IPAddress APaddress = IPAddress(192, 168, 4, 1);
 
     void serialize(DynamicJsonDocument &document);
     void deserialize(DynamicJsonDocument &document);

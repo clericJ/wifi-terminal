@@ -1,3 +1,5 @@
+void serialEvent();
+
 #include "application.hpp"
 
 Application *app; 

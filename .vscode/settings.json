@@ -35,5 +35,6 @@
         "utility": "cpp",
         "typeinfo": "cpp",
         "string": "cpp"
-    }
+    },
+    "restructuredtext.confPath": ""
 }

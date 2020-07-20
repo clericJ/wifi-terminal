@@ -6,6 +6,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266FtpServer.h>
+#include <WebSocketsServer.h>
 #include <DNSServer.h>
 #include <Ticker.h>
 #include <memory>
@@ -43,6 +44,8 @@ const size_t STACK_MAX_SIZE = 512;
 #define HTTP_SERVER_NOT_FOUND_ 404
 #define REBOOT_DELAY 5000
 #define RX_BUFFER_SIZE 1024
+#define LINE_MAX 80
+#define WEBSOCKET_PORT_ 81
 
 void changeBuilinLedState();
 
@@ -55,12 +58,20 @@ public:
 
 protected:
     Configuration *_settings;
-
     WiFiClient _terminalClient;
     WiFiServer *_terminalServer;
     ESP8266WebServer *_WebServer;
+
+    WebSocketsServer *_webSockServer;
+
     FtpServer *_FTPServer;
     Ticker *_blinker;
+
+    void handleWebSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length);
+    String getContentType(const String &filename);
+    bool handleFileRead(String path);
+    void handleNotFound();
+    void handleWebConsole();
 
     void handleTerminalClient();
     void handleSettingsSave();

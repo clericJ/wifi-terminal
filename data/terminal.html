@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Terminal Emulator</title>
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="jquery.mousewheel-min.js"></script>
+    <script src="jquery.terminal.min.js"></script>
+    <link href="jquery.terminal.css" rel="stylesheet" />
+    <!--<script src="keyboard.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <script>
+        var terminal;
+        var connection;
+        let CHUNK_SIZE = 512;
+        let WEBSOCKET_PORT = 81;
+        const NEW_LINE = "\r";
+
+        function chunkString(str, length = 10) {
+            let result = [],
+                offset = 0;
+
+            if (str.length <= length)
+                return result.push(str) && result;
+
+            while (offset < str.length) {
+                result.push(str.substr(offset, length));
+                offset += length;
+            }
+            return result;
+        }
+        jQuery(function ($) {
+            terminal = $('body').terminal(function (command, term) {
+                if (command == "")
+                    connection.send(NEW_LINE)
+                else {
+                    connection.send(command + NEW_LINE);
+                    // проверить
+                    // let chunks = chunkString(command, CHUNK_SIZE);
+                    // for (let index = 0; index < chunks.length; index++) {
+                    //     if(index+1 == chunks.length)
+                    //         terminal.send(command + NEW_LINE);
+                    //     else
+                    //         terminal.send(command);   
+                    // }
+                }
+            }, {
+                // wrap: false,
+                echoCommand: false,
+                linksNoReferer: true,
+                greetings: "[[;lightgreen;]web terminal started]",
+                prompt: ":"
+            });
+        })
+        function connectToServer() {
+            connection = new WebSocket(`ws://${location.hostname}:${WEBSOCKET_PORT}/`);
+            connection.onopen = function (e) {
+                terminal.echo("[[;lightgreen;]connection opened]");
+            };
+            connection.onmessage = function (event) {
+                if (terminal) {
+                    terminal.echo(event.data);
+                }
+            };
+            connection.onclose = function (event) {
+                if (event.wasClean) {
+                    terminal.error(`[[;lightgreen;]connection closed code=${event.code}]`);
+                } else {
+                    terminal.error("[connection aborted, try refresh page]");
+                }
+            };
+            connection.onerror = function (error) {
+                terminal.error(`[error ${error.message}]`);
+            };
+        }
+        connectToServer();
+    </script>
+</body>
+
+</html>
