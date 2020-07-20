@@ -19,16 +19,17 @@ Screenshots
 -----------
 
 Configuration:
-.. figure:: https://github.com/clericJ/wifi-terminal/raw/master/web-interface.jpg
+.. figure:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/web-interface.jpg
 
 Web Terminal:
-.. figure:: https://github.com/clericJ/wifi-terminal/raw/master/web-terminal.jpg
+.. figure:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/web-terminal.jpg
 
 Wifi Serial Android App
-.. figure:: https://github.com/clericJ/wifi-terminal/raw/master/wifi-serial-android-app.jpg
+.. figure:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/wifi-serial-android-app.jpg
 
 Wemos D1 Mini rs232 shield
---------------------------
+==========================
 schematic: https://easyeda.com/clericJ/wemos-d1mini-rs232shield
-.. figure:: https://github.com/clericJ/wifi-terminal/raw/master/esp-and-shield.jpg
-.. figure:: https://github.com/clericJ/wifi-terminal/raw/master/rs232-shield.jpg
+-----------------
+.. figure:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/esp-and-shield.jpg
+.. figure:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/rs232-shield.jpg
