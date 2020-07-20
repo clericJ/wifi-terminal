@@ -18,26 +18,12 @@ telnet 192.168.4.1
 Screenshots
 -----------
 
-Configuration:
-.. image:: https://raw.gihubusercontent.com/clericJ/wifi-terminal/master/img/web-interface.jpg
-    :scale: 50%
-    :align: left
-
-Web Terminal:
-.. image:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/web-terminal.jpg
-    :scale: 50%
-    :align: rigth
-
-Wifi Serial Android App
-.. image:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/wifi-serial-android-app.jpg
+.. image:: img/interface.png
     :scale: 50%
 
 Wemos D1 Mini rs232 shield
 ==========================
 .. _schematic: https://easyeda.com/clericJ/wemos-d1mini-rs232shield
 
-.. image:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/esp-and-shield.jpg
-    :scale: 50%
-
-.. image:: https://raw.githubusercontent.com/clericJ/wifi-terminal/master/img/rs232-shield.jpg
+.. image:: img/wemos-rs232-shield.png
     :scale: 50%
