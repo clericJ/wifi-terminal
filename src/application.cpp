@@ -225,8 +225,36 @@ void Application::mainloop()
 void Application::handleWebConsole()
 {
     if(_terminalClient.connected())
-         return;
-
+    {
+        if (!_terminalClientAlreadyConnected)
+        {
+            _terminalClientAlreadyConnected = true;
+            _webSockServer->broadcastTXT(
+                "[[;red;]terminal client connected]");
+        }
+        return; /* exit */
+    }
+    else {
+        if(_terminalClientAlreadyConnected)
+        {
+            _terminalClientAlreadyConnected = false;
+            _webSockServer->broadcastTXT(
+                "[[;red;]terminal client disconnected]");
+        }
+    }
+    static String line;
+    while(Serial.available())
+    {
+        char chr = Serial.read();
+        if((chr == '\n') || (line.length() >= LINE_MAX))
+        {
+            _webSockServer->broadcastTXT(line);
+            line.clear();
+        }
+        if (chr != '\n')
+            line += chr;
+        
+    }
     // протестировать
     // static char buffer[LINE_MAX];
     // static size_t index = 0;
@@ -241,18 +269,4 @@ void Application::handleWebConsole()
     //     if(chr != '\n')
     //         buffer[index++] = chr;
     // }
-
-    static String line;
-    while(Serial.available())
-    {
-        char chr = Serial.read();
-        if((chr == '\n') || (line.length() >= LINE_MAX))
-        {
-            _webSockServer->broadcastTXT(line);
-            line.clear();
-        }
-        if (chr != '\n')
-            line += chr;
-        
-    }
 }

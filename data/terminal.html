@@ -13,13 +13,34 @@
 </head>
 
 <body>
+    <span>New line symbol:</span>
+    <select name="newline_symbol" size="1" id="newline_symbol">
+        <option value="LF">LF</option>
+        <option value="CR" selected>CR</option>
+        <option value="CR+LF">CR+LF</option>
+    </select>
     <script>
         var terminal;
         var connection;
         let CHUNK_SIZE = 512;
         let WEBSOCKET_PORT = 81;
-        const NEW_LINE = "\r";
 
+        function getNewLineSymbol() {
+            let val = document.getElementById("newline_symbol").value;
+            let result = "?";
+            switch (val) {
+                case "LF":
+                    result = '\n';
+                    break;
+                case "CR":
+                    result = '\r';
+                    break;
+                case "CR+LF":
+                    result = '\r\n';
+                    break;
+            }
+            return result;
+        }
         function chunkString(str, length = 10) {
             let result = [],
                 offset = 0;
@@ -35,18 +56,18 @@
         }
         jQuery(function ($) {
             terminal = $('body').terminal(function (command, term) {
-                if (command == "")
-                    connection.send(NEW_LINE)
-                else {
-                    connection.send(command + NEW_LINE);
-                    // проверить
-                    // let chunks = chunkString(command, CHUNK_SIZE);
-                    // for (let index = 0; index < chunks.length; index++) {
-                    //     if(index+1 == chunks.length)
-                    //         terminal.send(command + NEW_LINE);
-                    //     else
-                    //         terminal.send(command);   
-                    // }
+
+                if (command == "") {
+                    connection.send(getNewLineSymbol())
+                } else {
+                    //connection.send(command + getNewLineSymbol());
+                    let chunks = chunkString(command, CHUNK_SIZE);
+                    for (let index = 0; index < chunks.length; index++) {
+                        if (index + 1 == chunks.length)
+                            connection.send(command + getNewLineSymbol());
+                        else
+                            connection.send(command);
+                    }
                 }
             }, {
                 // wrap: false,

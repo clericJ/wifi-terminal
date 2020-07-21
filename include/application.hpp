@@ -79,6 +79,9 @@ protected:
     bool handleRoot();
     bool startAP();
     void halt();
+
+private:
+    bool _terminalClientAlreadyConnected = false;
 };
 
 #endif
